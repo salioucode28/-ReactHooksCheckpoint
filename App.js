@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-const TMDB_API_KEY = "fd06120cbae486a0b6ac8d55fa86862b";
+const TMDB_API_KEY = "your_API_key";
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";
 const TMDB_IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
 
