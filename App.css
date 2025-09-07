@@ -1,0 +1,255 @@
+/* =========================
+   VibeFlix - Modern UI React
+   ========================= */
+
+/* Reset global */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+body {
+  background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+  color: #eee;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* Container principal */
+.App {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+/* ===== HEADER ===== */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.logo {
+  font-size: 3rem;
+  font-weight: 900;
+  background: linear-gradient(45deg, #ff0057, #ff8a00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 12px rgba(255, 0, 87, 0.5);
+}
+
+/* ===== RECHERCHE ===== */
+.search-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background: #2b2b2b;
+  border-radius: 40px;
+  padding: 10px 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.search-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 10px 12px;
+  width: 250px;
+  transition: width 0.3s ease;
+}
+
+.search-input:focus {
+  width: 300px;
+}
+
+.search-input::placeholder {
+  color: #aaa;
+  opacity: 1;
+}
+
+.search-button {
+  background: #ff0057;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 0, 87, 0.5);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.search-button:hover {
+  transform: scale(1.1);
+  background: #ff3d87;
+}
+
+/* ===== GRILLE DE FILMS ===== */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 28px;
+  margin-bottom: 40px;
+}
+
+/* ===== CARTE DE FILM ===== */
+.movie-card {
+  background: #1f1f1f;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+}
+
+.movie-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 36px rgba(255, 0, 87, 0.25), 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.movie-poster {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2/3;
+  overflow: hidden;
+  border-bottom: 1px solid #333;
+}
+
+.movie-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.movie-card:hover .movie-poster img {
+  transform: scale(1.05);
+  filter: brightness(0.65) blur(0.8px);
+}
+
+/* Overlay play */
+.movie-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(24, 24, 24, 0.65);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.25s;
+}
+
+.movie-card:hover .movie-overlay {
+  opacity: 1;
+}
+
+.play-button {
+  background: #ff0057;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(255, 0, 87, 0.5);
+  transition: background 0.25s, transform 0.25s;
+}
+
+.play-button:hover {
+  background: #ff8a80;
+  transform: scale(1.15);
+}
+
+/* Infos film */
+.movie-info {
+  padding: 18px 16px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.movie-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.movie-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stars {
+  color: #ffd700;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.rating-number {
+  color: #bbb;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .search-input {
+    width: 180px;
+  }
+
+  .movies-grid {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 2.2rem;
+  }
+
+  .movies-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== SCROLLBAR CUSTOM ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  background: #222;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff0057, #ff8a00);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff3d87;
+}
+
+
+
+
+
+
